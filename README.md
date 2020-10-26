@@ -18,7 +18,7 @@
     Please visit the official [NodeJS website](https://nodejs.org/en/) for the most accurate instructions for your machine. The below command assumes you have [homebrew](https://brew.sh/) installed.
 
     ```shell
-    # Assuming you have
+    # Assuming you have homebrew installed
     brew update && brew install node
     ```
 
@@ -29,6 +29,8 @@
     ```shell
     git clone https://github.com/AdamAnSubtractM/portfolio.git
     ```
+
+## To run the frontend of the site:
 
 1.  **Change directories to the client-side project.**
 
@@ -55,6 +57,8 @@
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
+    /server
+    ├── TBD
     /client
     ├── node_modules
     ├── src
