@@ -1,5 +1,11 @@
 import React from 'react';
+import Head from '../components/Head';
 
 export default function AboutPage() {
-  return <div style={{ backgroundColor: 'orange' }}>About</div>;
+  return (
+    <div>
+      <Head title={`About`} />
+      About
+    </div>
+  );
 }

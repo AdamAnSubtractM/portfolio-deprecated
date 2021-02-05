@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 
-export const sitePages = [
+export const sitePages: Page[] = [
   {
     text: `Home`,
     to: `/`,

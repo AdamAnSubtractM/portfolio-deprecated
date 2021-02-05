@@ -37,7 +37,7 @@ const colors = {
   // #FFFFF4
   offWhite: (alpha?: theme['alpha']) => `hsla(60, 100%, 98%, ${alpha || 1})`,
   // #ffffff
-  white: (alpha?: theme['alpha']) => `hsla(0, 0, 100%, ${alpha || 1})`,
+  white: (alpha?: theme['alpha']) => `hsla(0, 0%, 100%, ${alpha || 1})`,
 };
 
 const sizes = {
@@ -59,14 +59,22 @@ const theme = {
       primarySolo: {
         text: colors.white,
         background: colors.primary,
+        border: colors.primary,
       },
       primary: {
-        text: ``,
-        background: ``,
+        text: colors.white,
+        background: colors.primary,
+        border: colors.primary,
       },
       secondary: {
-        text: ``,
-        background: ``,
+        text: colors.primary,
+        background: `transparent`,
+        border: colors.primary,
+      },
+      disabled: {
+        text: colors.grayDark,
+        background: `transparent`,
+        border: colors.grayDark,
       },
     },
   },
@@ -80,17 +88,25 @@ const theme = {
       primarySolo: {
         text: colors.white,
         background: colors.secondary,
+        border: colors.secondary,
       },
       primary: {
-        text: ``,
-        background: ``,
+        text: colors.white,
+        background: colors.secondary,
+        border: colors.secondary,
       },
       secondary: {
-        text: ``,
-        background: ``,
+        text: colors.secondary,
+        background: `transparent`,
+        border: colors.secondary,
+      },
+      disabled: {
+        text: colors.gray,
+        background: `transparent`,
+        border: colors.gray,
       },
     },
   },
 };
 
-export { colors, sizes };
+export { colors, sizes, theme };

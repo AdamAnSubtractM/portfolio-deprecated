@@ -1,5 +1,11 @@
 import React from 'react';
+import Head from '../components/Head';
 
 export default function HomePage() {
-  return <div>Hello world!</div>;
+  return (
+    <div>
+      <Head title={`Welcome`} />
+      Hello world!
+    </div>
+  );
 }

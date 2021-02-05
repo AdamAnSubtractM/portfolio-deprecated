@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './src/components/Layout';
+import { AppProvider } from './src/context/AppContext';
 import { PageProvider } from './src/context/PageContext';
 
 export function wrapPageElement({ element, props }) {
@@ -7,5 +8,9 @@ export function wrapPageElement({ element, props }) {
 }
 
 export function wrapRootElement({ element }) {
-  return <PageProvider>{element}</PageProvider>;
+  return (
+    <AppProvider>
+      <PageProvider>{element}</PageProvider>
+    </AppProvider>
+  );
 }

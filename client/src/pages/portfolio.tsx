@@ -1,5 +1,11 @@
 import React from 'react';
+import Head from '../components/Head';
 
 export default function PortfolioPage() {
-  return <div style={{ backgroundColor: `red` }}>Portfolio</div>;
+  return (
+    <div>
+      <Head title={`Portfolio`} />
+      Portfolio
+    </div>
+  );
 }

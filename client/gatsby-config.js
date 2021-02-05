@@ -5,6 +5,15 @@
  */
 
 module.exports = {
-  /* Your site config here */
-  plugins: [`gatsby-plugin-typescript`, `gatsby-plugin-styled-components`],
+  siteMetadata: {
+    title: `Adam Knee's Website`,
+    siteUrl: `https://adamknee.net/`,
+    description: `The web development portfolio of Adam Knee.`,
+    twitter: `@AdamAnSubtractM`,
+  },
+  plugins: [
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+  ],
 };
