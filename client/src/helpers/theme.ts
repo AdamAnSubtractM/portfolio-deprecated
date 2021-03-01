@@ -5,7 +5,7 @@ type theme = {
 
 const colors = {
   // #45404A
-  primaryDark: (alpha: theme['alpha']) => `hsla(270, 7%, 27%, ${alpha || 1})`,
+  primaryDark: (alpha?: theme['alpha']) => `hsla(270, 7%, 27%, ${alpha || 1})`,
   // #6A57DC
   primary: (alpha?: theme['alpha']) => `hsla(249, 66%, 60%, ${alpha || 1})`,
   // #A883F8
@@ -48,28 +48,48 @@ const sizes = {
   xl: 1400,
 };
 
+const layers = {
+  layer0: -1,
+  layer1: 250,
+  layer2: 500,
+  layer3: 750,
+  layer4: 1000,
+  layer5: 9999,
+};
+
 const theme = {
   lightMode: {
     background: colors.white,
+    backgroundAlt: colors.gray,
+    card: colors.offWhite,
     text: colors.black,
+    focusUnderline: colors.grayDark,
+    scrollbar: colors.primary,
+    boxShadow: `0 0.3rem 0.6rem ${colors.primaryDark(
+      0.16
+    )}, 0 0.3rem 0.6rem ${colors.primaryDark(0.23)}`,
     link: {
       default: colors.primary,
+      hover: colors.primaryDark,
     },
     button: {
       primarySolo: {
         text: colors.white,
         background: colors.primary,
         border: colors.primary,
+        focus: colors.primaryDark,
       },
       primary: {
         text: colors.white,
         background: colors.primary,
         border: colors.primary,
+        focus: colors.primaryDark,
       },
       secondary: {
         text: colors.primary,
         background: `transparent`,
         border: colors.primary,
+        focus: colors.primaryDark,
       },
       disabled: {
         text: colors.grayDark,
@@ -80,25 +100,36 @@ const theme = {
   },
   darkMode: {
     background: colors.black,
+    backgroundAlt: colors.black,
+    card: colors.grayDark,
     text: colors.offWhite,
+    focusUnderline: colors.grayDark,
+    scrollbar: colors.secondary,
+    boxShadow: `0 0.3rem 0.6rem ${colors.primaryDark(
+      0.16
+    )}, 0 0.3rem 0.6rem ${colors.primaryDark(0.23)}`,
     link: {
       default: colors.secondary,
+      hover: colors.secondaryLight,
     },
     button: {
       primarySolo: {
         text: colors.white,
         background: colors.secondary,
         border: colors.secondary,
+        focus: colors.secondaryLight,
       },
       primary: {
         text: colors.white,
         background: colors.secondary,
         border: colors.secondary,
+        focus: colors.secondaryLight,
       },
       secondary: {
         text: colors.secondary,
         background: `transparent`,
         border: colors.secondary,
+        focus: colors.secondaryLight,
       },
       disabled: {
         text: colors.gray,
@@ -109,4 +140,4 @@ const theme = {
   },
 };
 
-export { colors, sizes, theme };
+export { colors, sizes, layers, theme };

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import AppContext from '../../context/AppContext';
 import { sizes } from '../theme';
 
 /**
@@ -40,10 +41,30 @@ const useWindowSize = function () {
 /**
  * returns whether the current window size is a "mobile" screensize
  */
-const useIsMobile = function () {
+const useIsMobile = function (sizeKey?: Sizes[`keys`]) {
   // grab current window width
   const width = useWindowSize().width;
-  return Boolean(width && width < sizes.lg);
+  return sizeKey ? Boolean(width && width < sizes[sizeKey]) : Boolean(width && width < sizes.lg);
 };
 
-export { useWindowSize, useIsMobile };
+/**
+ * returns the current themeKey so that context doesn't have to be imported each time
+ */
+const useThemeKey = function () {
+  const [appData] = useContext<[ThemeProps]>(AppContext);
+  const [themeKey, setThemeKey] = useState<ThemeProps['themeKey']>(
+    appData?.themeKey || `lightMode`
+  );
+
+  useEffect(() => {
+    if (appData?.themeKey) {
+      if (themeKey !== appData.themeKey) {
+        setThemeKey(appData.themeKey);
+      }
+    }
+  }, [appData]);
+
+  return themeKey;
+};
+
+export { useWindowSize, useIsMobile, useThemeKey };

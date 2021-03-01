@@ -1,14 +1,14 @@
 import React, { createContext, useState } from 'react';
 
 type AppProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const AppContext = createContext(undefined);
 
 export function AppProvider({ children }: AppProps) {
   const [appData, setAppData] = useState<ThemeProps>({
-    themeKey: `lightMode`,
+    themeKey: `darkMode`,
   });
 
   return (

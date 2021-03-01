@@ -1,54 +1,107 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import AppContext from '../context/AppContext';
-import { motion } from 'framer-motion';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { useThemeKey } from '../helpers/hooks';
 import { theme } from '../helpers/theme';
 
 type MenuToggleProps = {
   toggle: () => void;
+  isOpen: boolean;
 };
 
-const StyledButton = styled.button``;
+type StyledButtonProps = {
+  themeKey: ThemeProps['themeKey'];
+  isOpen: MenuToggleProps['isOpen'];
+};
 
-const StyledMenuLine = styled(motion.path)<ThemeProps>`
-  fill: transparent;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke: ${({ themeKey }) => theme[themeKey].text()};
+const closedTransitionMixin = css`
+  transition: top var(--transition-speed) var(--transition-speed)
+      var(--transition-type),
+    bottom var(--transition-speed) var(--transition-speed)
+      var(--transition-type),
+    transform var(--transition-speed) var(--transition-type);
 `;
 
-export default function MenuToggle({ toggle }: MenuToggleProps) {
-  const [appData] = useContext(AppContext);
+const openTransitionMixin = css`
+  transition: top var(--transition-speed) var(--transition-type),
+    bottom var(--transition-speed) var(--transition-type),
+    transform var(--transition-speed) var(--transition-speed)
+      var(--transition-type);
+`;
 
-  const { themeKey } = appData;
+const StyledButton = styled.button<StyledButtonProps>`
+  --menu-width: 68px;
+  --half-height: 4px;
+  --height: calc(var(--half-height) * 2);
+  --transition-speed: 0.25s;
+  --transition-type: cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+  min-width: var(--menu-width);
+  min-height: ${(props) => (props.isOpen ? `50px` : `initial`)};
+  padding: 0;
+  &:focus,
+  &:hover {
+    outline: none;
+    &:before,
+    &:after {
+      outline: none;
+      background-color: ${({ themeKey }) => theme[themeKey].link.default()};
+    }
+    span {
+      outline: none;
+      color: ${({ themeKey }) => theme[themeKey].link.default()};
+    }
+  }
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: ${(props) =>
+      props.isOpen
+        ? `calc(var(--menu-width) - var(--height))`
+        : `var(--menu-width)`};
+    height: var(--height);
+    background-color: ${({ themeKey }) => theme[themeKey].text()};
+    ${(props) => (props.isOpen ? openTransitionMixin : closedTransitionMixin)};
+  }
+  &:before {
+    top: ${(props) => (props.isOpen ? `calc(50% - var(--half-height))` : `0`)};
+    transform: ${(props) => (props.isOpen ? `rotate(-45deg)` : `rotate(0)`)};
+  }
+  &:after {
+    bottom: ${(props) =>
+      props.isOpen ? `calc(50% - var(--half-height))` : `0`};
+    transform: ${(props) => (props.isOpen ? `rotate(45deg)` : `rotate(0)`)};
+  }
+  span {
+    display: block;
+    text-transform: lowercase;
+    font-weight: 900;
+    margin: 1rem auto;
+    color: ${({ themeKey }) => theme[themeKey].text()};
+    -webkit-font-smoothing: antialiased;
+    top: ${(props) => (props.isOpen ? `0.25rem` : `0`)};
+    left: ${(props) => (props.isOpen ? `-6.25rem` : `0`)};
+    position: ${(props) => (props.isOpen ? `absolute` : `static`)};
+    transition: top var(--transition-speed) var(--transition-type),
+      left var(--transition-speed) var(--transition-speed)
+        var(--transition-type);
+  }
+`;
+
+export default function MenuToggle({ toggle, isOpen }: MenuToggleProps) {
+  const themeKey = useThemeKey();
 
   return (
-    <StyledButton className={`menu-toggle`} onClick={toggle}>
-      <svg width="23" height="23" viewBox="0 0 23 23">
-        <StyledMenuLine
-          themeKey={themeKey}
-          variants={{
-            closed: { d: 'M 2 2.5 L 20 2.5' },
-            open: { d: 'M 3 16.5 L 17 2.5' },
-          }}
-        />
-        <StyledMenuLine
-          themeKey={themeKey}
-          d="M 2 9.423 L 20 9.423"
-          variants={{
-            closed: { opacity: 1 },
-            open: { opacity: 0 },
-          }}
-          transition={{ duration: 0.1 }}
-        />
-        <StyledMenuLine
-          themeKey={themeKey}
-          variants={{
-            closed: { d: 'M 2 16.346 L 20 16.346' },
-            open: { d: 'M 3 2.5 L 17 16.346' },
-          }}
-        />
-      </svg>
+    <StyledButton
+      className={`menu__toggle`}
+      onClick={toggle}
+      themeKey={themeKey}
+      isOpen={isOpen}
+    >
+      <span>{isOpen ? `Close` : `Menu`}</span>
     </StyledButton>
   );
 }

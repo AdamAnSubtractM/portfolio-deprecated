@@ -6,7 +6,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Adam Knee's Website`,
+    title: `Adam Knee`,
     siteUrl: `https://adamknee.net/`,
     description: `The web development portfolio of Adam Knee.`,
     twitter: `@AdamAnSubtractM`,
@@ -15,5 +15,13 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images/`,
+      },
+    },
   ],
 };
