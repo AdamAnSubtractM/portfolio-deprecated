@@ -61,7 +61,14 @@ const theme = {
   lightMode: {
     background: colors.white,
     backgroundAlt: colors.gray,
-    card: colors.offWhite,
+    card: {
+      background: colors.offWhite,
+      text: colors.black,
+      alt: {
+        background: colors.primaryDark,
+        text: colors.offWhite,
+      },
+    },
     text: colors.black,
     focusUnderline: colors.grayDark,
     scrollbar: colors.primary,
@@ -70,7 +77,7 @@ const theme = {
     )}, 0 0.3rem 0.6rem ${colors.primaryDark(0.23)}`,
     link: {
       default: colors.primary,
-      hover: colors.primaryDark,
+      hover: colors.accentThree,
     },
     button: {
       primarySolo: {
@@ -78,18 +85,21 @@ const theme = {
         background: colors.primary,
         border: colors.primary,
         focus: colors.primaryDark,
+        focusAlt: colors.secondaryLight,
       },
       primary: {
         text: colors.white,
         background: colors.primary,
         border: colors.primary,
         focus: colors.primaryDark,
+        focusAlt: colors.secondaryLight,
       },
       secondary: {
         text: colors.primary,
         background: `transparent`,
         border: colors.primary,
         focus: colors.primaryDark,
+        focusAlt: colors.secondaryLight,
       },
       disabled: {
         text: colors.grayDark,
@@ -97,11 +107,22 @@ const theme = {
         border: colors.grayDark,
       },
     },
+    input: {
+      border: `3px solid ${colors.grayDark()}`,
+      focusColor: colors.secondary,
+    },
   },
   darkMode: {
     background: colors.black,
     backgroundAlt: colors.black,
-    card: colors.grayDark,
+    card: {
+      background: colors.grayDark,
+      text: colors.offWhite,
+      alt: {
+        background: colors.gray,
+        text: colors.primaryDark,
+      },
+    },
     text: colors.offWhite,
     focusUnderline: colors.grayDark,
     scrollbar: colors.secondary,
@@ -118,24 +139,31 @@ const theme = {
         background: colors.secondary,
         border: colors.secondary,
         focus: colors.secondaryLight,
+        focusAlt: colors.primaryDark,
       },
       primary: {
         text: colors.white,
         background: colors.secondary,
         border: colors.secondary,
         focus: colors.secondaryLight,
+        focusAlt: colors.primaryDark,
       },
       secondary: {
         text: colors.secondary,
         background: `transparent`,
         border: colors.secondary,
         focus: colors.secondaryLight,
+        focusAlt: colors.primaryDark,
       },
       disabled: {
         text: colors.gray,
         background: `transparent`,
         border: colors.gray,
       },
+    },
+    input: {
+      border: `3px solid ${colors.grayDark()}`,
+      focusColor: colors.primary,
     },
   },
 };

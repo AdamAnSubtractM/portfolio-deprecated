@@ -34,6 +34,7 @@ const StyledIcon = styled.span<StyledIconProps>`
   position: relative;
   z-index: ${layers.layer1};
   outline: none;
+  color: inherit;
   &:focus,
   &:hover {
     outline: none;
@@ -77,11 +78,14 @@ export default function Icon({
           openInNewTab={openInNewTab}
           to={to}
           cursor={`pointer`}
+          className={`icon`}
         >
           {children}
         </StyledIcon>
       ) : (
-        <StyledIcon themeKey={themeKey}>{children}</StyledIcon>
+        <StyledIcon themeKey={themeKey} className={`icon`}>
+          {children}
+        </StyledIcon>
       )}
     </>
   );

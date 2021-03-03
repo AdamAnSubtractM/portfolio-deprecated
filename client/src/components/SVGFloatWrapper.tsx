@@ -7,10 +7,14 @@ type WrapperProps = {
   xmlns: string;
   viewBox: string;
   fill?: string;
+  y?: number;
+  duration?: number;
 };
 
 export default function SVGFloatWrapper({
   children,
+  y,
+  duration,
   ...svgProps
 }: WrapperProps) {
   return (
@@ -19,12 +23,12 @@ export default function SVGFloatWrapper({
         <svg {...svgProps}>{children}</svg>
       ) : (
         <motion.svg
-          animate={{ y: 100 }}
+          animate={{ y: y || 100 }}
           transition={{
             delay: 0.5,
             repeat: Infinity,
             repeatType: 'reverse',
-            duration: 10,
+            duration: duration || 10,
           }}
           {...svgProps}
         >

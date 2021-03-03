@@ -7,6 +7,8 @@ export default function AstronautManRidingRocket() {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 395 457'
+      y={25}
+      duration={5}
     >
       <path
         d='M68.5 430c29 7 55.5-13.5 48-49-21-38.5-63.5-18.5-72.5 7-6.75 22.5-18.5 28-43 42 27.8083-11.844 46.5809-5.049 67.5 0z'

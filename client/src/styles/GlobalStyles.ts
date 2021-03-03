@@ -85,6 +85,10 @@ const GlobalStyles = createGlobalStyle`
     }
     h1 {
       font-size: 4rem;
+      margin-bottom: 0;
+    }
+    h2 {
+      font-size: 3rem;
     }
     img {
       max-width: 100%;
@@ -94,14 +98,21 @@ const GlobalStyles = createGlobalStyle`
       display: inline-flex;
       align-content: center;
       justify-content: center;
-      color: inherit;
       text-decoration: none;
       &.icon {
         font-size: 2.6rem;
+        color: inherit;
       }
     }
     p {
       font-size: 2.2rem;
+    }
+    input, textarea {
+      padding: 2rem 1rem;
+      border: 1px solid transparent;
+      &:focus {
+        outline: none;
+      }
     }
 `;
 

@@ -1,28 +1,33 @@
+import ContactForm from '../components/ContactForm';
 import React from 'react';
 import styled from 'styled-components';
+import A from '../components/AnchorTag';
 import AstronautManRidingRocket from '../components/AstronautManRidingRocket';
 import Card from '../components/Card';
 import Head from '../components/Head';
-import { StyledFlexContainer, StyledPageWrapper } from '../styles/LayoutStyles';
-import { theme, sizes } from '../helpers/theme';
-import A from '../components/AnchorTag';
-
 import { useThemeKey } from '../helpers/hooks';
+import { sizes, theme } from '../helpers/theme';
+import { StyledFlexContainer, StyledPageWrapper } from '../styles/LayoutStyles';
 
 const StyledPage = styled.div<ThemeProps>`
   .content {
-    @media all and (min-width: ${sizes.md}px) {
-      width: 55%;
+    @media all and (min-width: ${sizes.sm}px) {
+      width: 46%;
+      margin-right: 2%;
     }
     svg {
-      max-height: 40rem;
+      max-height: 50rem;
+      position: absolute;
+      bottom: 0;
+      @media all and (min-width: ${sizes.sm}px) {
+        position: static;
+      }
     }
   }
-  form {
-    h2 {
-      margin-top: 0;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid ${({ themeKey }) => theme[themeKey].text()};
+  .form {
+    width: 100%;
+    @media all and (min-width: ${sizes.sm}px) {
+      width: 52%;
     }
   }
 `;
@@ -44,7 +49,7 @@ export default function ContactPage() {
       <StyledPage themeKey={themeKey}>
         <Head title={`Contact`} />
         <h1>Contact</h1>
-        <StyledFlexContainer>
+        <StyledFlexContainer breakpoint={`sm`}>
           <div className={`content`}>
             <p>
               Thanks for stopping by my site. Feel free to use the contact form
@@ -71,11 +76,11 @@ export default function ContactPage() {
             </p>
             <AstronautManRidingRocket />
           </div>
-          <Card>
-            <form>
-              <h2>Drop me a line</h2>
-            </form>
-          </Card>
+          <div className={`form`}>
+            <Card mobileTransparency={true} breakpoint={`sm`} altStyling={true}>
+              <ContactForm breakpoint={`sm`} />
+            </Card>
+          </div>
         </StyledFlexContainer>
       </StyledPage>
     </StyledPageWrapper>

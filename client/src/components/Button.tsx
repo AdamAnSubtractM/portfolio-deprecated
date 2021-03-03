@@ -13,9 +13,16 @@ type ButtonProps = {
   openInNewTab?: boolean;
   isInternalLink?: boolean;
   title?: string;
+  type?: `submit`;
+  swapFocusColor?: boolean;
 };
 
-const buttonBaseStyles = css<ThemeProps>`
+type StyledButtonProps = {
+  $themeKey: ThemeProps['themeKey'];
+  swapFocusColor?: ButtonProps['swapFocusColor'];
+};
+
+const buttonBaseStyles = css<StyledButtonProps>`
   display: inline-flex;
   cursor: pointer;
   text-transform: uppercase;
@@ -29,39 +36,46 @@ const buttonBaseStyles = css<ThemeProps>`
   margin: 0.5rem 0;
   &:focus {
     outline: none;
-    border-color: ${({ $themeKey }) => theme[$themeKey].link.default()};
+    border-color: ${({ $themeKey, swapFocusColor }) =>
+      swapFocusColor
+        ? theme[$themeKey].link.hover()
+        : theme[$themeKey].link.default()};
   }
 `;
 
-const primaryButtonStyles = css<ThemeProps>`
+const primaryButtonStyles = css<StyledButtonProps>`
   color: ${({ $themeKey }) => theme[$themeKey].button.primarySolo.text()};
   background-color: ${({ $themeKey }) =>
     theme[$themeKey].button.primarySolo.background()};
   border-color: ${({ $themeKey }) =>
     theme[$themeKey].button.primarySolo.border()};
   &:focus {
-    border-color: ${({ $themeKey }) =>
-      theme[$themeKey].button.primarySolo.focus()};
+    border-color: ${({ $themeKey, swapFocusColor }) =>
+      swapFocusColor
+        ? theme[$themeKey].button.primarySolo.focusAlt()
+        : theme[$themeKey].button.primarySolo.focus()};
   }
 `;
 
-const secondaryButtonStyles = css<ThemeProps>`
+const secondaryButtonStyles = css<StyledButtonProps>`
   color: ${({ $themeKey }) => theme[$themeKey].button.secondary.text()};
   background-color: ${({ $themeKey }) =>
     theme[$themeKey].button.secondary.background};
   border-color: ${({ $themeKey }) =>
     theme[$themeKey].button.secondary.border()};
   &:focus {
-    border-color: ${({ $themeKey }) =>
-      theme[$themeKey].button.secondary.focus()};
+    border-color: ${({ $themeKey, swapFocusColor }) =>
+      swapFocusColor
+        ? theme[$themeKey].button.secondary.focusAlt()
+        : theme[$themeKey].button.secondary.focus()};
   }
 `;
 
-const groupedButtonStyles = css<ThemeProps>`
+const groupedButtonStyles = css<StyledButtonProps>`
   border-radius: 0.25rem;
 `;
 
-const StyledButton = styled.button<ThemeProps>`
+const StyledButton = styled.button<StyledButtonProps>`
   ${buttonBaseStyles}
 `;
 
@@ -69,7 +83,7 @@ const StyledPrimaryButton = styled(StyledButton)`
   ${primaryButtonStyles}
 `;
 
-const StyledPrimaryLink = styled(Link)<ThemeProps>`
+const StyledPrimaryLink = styled(Link)<StyledButtonProps>`
   ${buttonBaseStyles}
   ${primaryButtonStyles}
 `;
@@ -121,6 +135,8 @@ export default function Button({
   title = `Click to view this content.`,
   openInNewTab,
   isInternalLink = true,
+  type,
+  swapFocusColor,
 }: ButtonProps) {
   const themeKey = useThemeKey();
 
@@ -133,6 +149,7 @@ export default function Button({
               $themeKey={themeKey}
               title={title}
               to={to}
+              swapFocusColor={swapFocusColor}
               className={`button button--primary button--primary-solo`}
             >
               {children}
@@ -144,6 +161,7 @@ export default function Button({
               href={to}
               target={openInNewTab ? `_blank` : `_self`}
               rel={openInNewTab ? `noopener noreferrer` : null}
+              swapFocusColor={swapFocusColor}
             >
               {children}
             </StyledPrimaryAnchor>
@@ -154,7 +172,9 @@ export default function Button({
           $themeKey={themeKey}
           onClick={onClick}
           title={title}
+          swapFocusColor={swapFocusColor}
           className={`button button--primary button--primary-solo`}
+          type={type}
         >
           {children}
         </StyledPrimaryButton>
@@ -167,6 +187,7 @@ export default function Button({
               $themeKey={themeKey}
               title={title}
               to={to}
+              swapFocusColor={swapFocusColor}
               className={`button button--primary button--primary-grouped`}
             >
               {children}
@@ -178,6 +199,7 @@ export default function Button({
               href={to}
               target={openInNewTab ? `_blank` : `_self`}
               rel={openInNewTab ? `noopener noreferrer` : null}
+              swapFocusColor={swapFocusColor}
               className={`button button--primary button--primary-grouped`}
             >
               {children}
@@ -195,7 +217,9 @@ export default function Button({
           title={title}
           target={openInNewTab ? `_blank` : `_self`}
           rel={openInNewTab ? `noopener` : null}
+          swapFocusColor={swapFocusColor}
           className={`button button--primary button--primary-grouped`}
+          type={type}
         >
           {children}
         </StyledGroupedPrimary>
@@ -208,6 +232,7 @@ export default function Button({
               $themeKey={themeKey}
               title={title}
               to={to}
+              swapFocusColor={swapFocusColor}
               className={`button button--secondary button--secondary-grouped`}
             >
               {children}
@@ -219,6 +244,7 @@ export default function Button({
               href={to}
               target={openInNewTab ? `_blank` : `_self`}
               rel={openInNewTab ? `noopener noreferrer` : null}
+              swapFocusColor={swapFocusColor}
               className={`button button--secondary button--secondary-grouped`}
             >
               {children}
@@ -236,7 +262,9 @@ export default function Button({
           title={title}
           target={openInNewTab ? `_blank` : `_self`}
           rel={openInNewTab ? `noopener` : null}
+          swapFocusColor={swapFocusColor}
           className={`button button--secondary button--secondary-grouped`}
+          type={type}
         >
           {children}
         </StyledGroupedSecondary>
@@ -247,7 +275,9 @@ export default function Button({
           $themeKey={themeKey}
           onClick={onClick}
           title={title}
+          swapFocusColor={swapFocusColor}
           className={`button`}
+          type={type}
         >
           {children}
         </StyledButton>

@@ -33,6 +33,25 @@ const anchorStyles = css<ThemeProps>`
       }
     }
   }
+  &.icon {
+    color: ${({ $themeKey }) => theme[$themeKey].text()};
+    border-bottom: none;
+    &:visited {
+      color: ${({ $themeKey }) => theme[$themeKey].link.default()};
+    }
+    &:hover,
+    &:focus {
+      color: inherit;
+      outline: 0;
+      border-bottom: none;
+      span {
+        background-color: transparent;
+      }
+    }
+    svg {
+      color: inherit;
+    }
+  }
   &:visited {
     color: ${({ $themeKey }) => theme[$themeKey].text()};
   }
@@ -49,6 +68,7 @@ const anchorStyles = css<ThemeProps>`
 `;
 
 const StyledLink = styled.span<ThemeProps>`
+  ${anchorStyles}
   a {
     ${anchorStyles}
   }

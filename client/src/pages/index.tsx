@@ -112,7 +112,8 @@ export default function HomePage() {
             </h1>
             <h2>
               I'm a web developer who builds{' '}
-              <A to={`/portfolio`}>cool&nbsp;stuff</A>that is out of this world.
+              <A to={`/portfolio`}>cool&nbsp;stuff</A> that is out of this
+              world.
             </h2>
             <div className={`button-wrap`}>
               <Button

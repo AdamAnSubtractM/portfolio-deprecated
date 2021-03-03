@@ -22,6 +22,7 @@ type StyledFlexContainerProps = {
     | 'inherit';
   preventMobileStack?: boolean;
   minWidth?: string;
+  breakpoint?: 'sm' | 'md' | 'lg' | 'xl';
 };
 
 type StyledSectionProps = {
@@ -46,7 +47,7 @@ export const StyledFlexContainer = styled.div<StyledFlexContainerProps>`
   flex-flow: ${(props) =>
     props.preventMobileStack ? `row wrap` : `column wrap`};
   min-width: ${(props) => props.minWidth || `initial`};
-  @media all and (min-width: ${sizes.md}px) {
+  @media all and (min-width: ${(props) => sizes[props.breakpoint || `md`]}px) {
     flex-flow: row wrap;
   }
 `;
