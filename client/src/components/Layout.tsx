@@ -1,6 +1,7 @@
 import 'normalize.css';
 import React from 'react';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useThemeKey } from '../helpers/hooks';
 import { theme } from '../helpers/theme';
@@ -13,7 +14,7 @@ type LayoutProps = {
 const StyledLayout = styled.section<ThemeProps>`
   min-height: 100vh;
   color: ${({ themeKey }) => theme[themeKey].text()};
-  background-color: ${({ themeKey }) => theme[themeKey].backgroundAlt()};
+  background-color: ${({ themeKey }) => theme[themeKey].background.alt()};
   main {
     display: flex;
     align-items: center;
@@ -30,6 +31,7 @@ export default function Layout({ children, ...props }: LayoutProps) {
       <GlobalStyles />
       <Header />
       <main>{children}</main>
+      <Footer />
     </StyledLayout>
   );
 }

@@ -128,7 +128,7 @@ export default function ToggleSwitch({
         tabIndex={0}
         id={id || `toggle-switch`}
         type='checkbox'
-        defaultChecked={defaultToggleState === `off` ? false : true}
+        checked={defaultToggleState === `off` ? false : true}
         onChange={() => callback(ToggleCheckbox?.current?.checked)}
         ref={ToggleCheckbox}
       />

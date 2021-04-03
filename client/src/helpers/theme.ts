@@ -59,8 +59,11 @@ const layers = {
 
 const theme = {
   lightMode: {
-    background: colors.white,
-    backgroundAlt: colors.gray,
+    background: {
+      main: colors.white,
+      alt: colors.gray,
+      opposite: colors.black,
+    },
     card: {
       background: colors.offWhite,
       text: colors.black,
@@ -68,6 +71,15 @@ const theme = {
         background: colors.primaryDark,
         text: colors.offWhite,
       },
+    },
+    toast: {
+      background: colors.offWhite,
+      text: colors.black,
+      alt: {
+        background: colors.primaryDark,
+        text: colors.offWhite,
+      },
+      focus: colors.primary,
     },
     text: colors.black,
     focusUnderline: colors.grayDark,
@@ -110,11 +122,15 @@ const theme = {
     input: {
       border: `3px solid ${colors.grayDark()}`,
       focusColor: colors.secondary,
+      error: colors.accentTwo,
     },
   },
   darkMode: {
-    background: colors.black,
-    backgroundAlt: colors.black,
+    background: {
+      main: colors.black,
+      alt: colors.black,
+      opposite: colors.white,
+    },
     card: {
       background: colors.grayDark,
       text: colors.offWhite,
@@ -122,6 +138,15 @@ const theme = {
         background: colors.gray,
         text: colors.primaryDark,
       },
+    },
+    toast: {
+      background: colors.grayDark,
+      text: colors.offWhite,
+      alt: {
+        background: colors.gray,
+        text: colors.primaryDark,
+      },
+      focus: colors.secondary,
     },
     text: colors.offWhite,
     focusUnderline: colors.grayDark,
@@ -164,6 +189,7 @@ const theme = {
     input: {
       border: `3px solid ${colors.grayDark()}`,
       focusColor: colors.primary,
+      error: colors.accentTwo,
     },
   },
 };

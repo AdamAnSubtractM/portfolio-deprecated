@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useIsMobile, useThemeKey } from '../helpers/hooks';
-import { layers, sizes, theme, colors } from '../helpers/theme';
+import { layers, sizes, theme } from '../helpers/theme';
 import A from './AnchorTag';
 import FocusEventElement from './FocusEventElement';
 import MenuToggle from './MenuToggle';
@@ -97,6 +97,7 @@ const StyledNav = styled(motion.nav)<StyledNavProps>`
     left: 0;
     bottom: 0;
     display: block;
+    min-height: 100vh;
     @media all and (min-width: ${sizes.lg}px) {
       display: none;
     }

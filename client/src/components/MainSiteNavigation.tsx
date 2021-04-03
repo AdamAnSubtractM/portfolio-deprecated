@@ -59,10 +59,10 @@ export default function MainSiteNaviagtion() {
         themeKey === 'lightMode'
           ? `${theme[
               themeKey
-            ].backgroundAlt()} url('stars-bg-alt.svg') center/50% repeat`
+            ].background.alt()} url('stars-bg-alt.svg') center/50% repeat`
           : `${theme[
               themeKey
-            ].backgroundAlt()} url('stars-bg.svg') center/50% repeat`
+            ].background.alt()} url('stars-bg.svg') center/50% repeat`
       }
     />
   );

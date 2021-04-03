@@ -22,7 +22,7 @@ type StyledFlexContainerProps = {
     | 'inherit';
   preventMobileStack?: boolean;
   minWidth?: string;
-  breakpoint?: 'sm' | 'md' | 'lg' | 'xl';
+  breakpoint?: Sizes[`keys`];
 };
 
 type StyledSectionProps = {
@@ -47,10 +47,15 @@ export const StyledFlexContainer = styled.div<StyledFlexContainerProps>`
   flex-flow: ${(props) =>
     props.preventMobileStack ? `row wrap` : `column wrap`};
   min-width: ${(props) => props.minWidth || `initial`};
+  position: relative;
   @media all and (min-width: ${(props) => sizes[props.breakpoint || `md`]}px) {
     flex-flow: row wrap;
   }
 `;
+
+export const StyledGridContainer = styled.div`
+  display: grid;
+`
 
 export const StyledPage = styled.div<StyledPageProps>`
   min-height: 90vh;
@@ -59,6 +64,8 @@ export const StyledPage = styled.div<StyledPageProps>`
   justify-content: center;
   align-content: center;
   background: ${(props) => props.background || `transparent`};
+  overflow: hidden;
+  padding-bottom: 5rem;
 `;
 
 export const StyledSection = styled.section<StyledSectionProps>`

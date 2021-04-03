@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-type PageProps = {
+type PageProviderProps = {
   children: React.ReactNode;
 };
 
@@ -11,7 +11,7 @@ type PageContextProps = [
 
 const PageContext = createContext<PageContextProps>(undefined);
 
-export function PageProvider({ children }: PageProps) {
+export function PageProvider({ children }: PageProviderProps) {
   const [pageData, setPageData] = useState<PageDataProps>({});
   return (
     <PageContext.Provider value={[pageData, setPageData]}>

@@ -1,12 +1,15 @@
 import React from 'react';
 import { useThemeKey } from '../helpers/hooks';
-import { StyledTextarea, StyledLabel } from '../styles/FormStyles';
+import { StyledLabel, StyledTextarea } from '../styles/FormStyles';
 
 type TextareaProps = {
   id: string;
+  name: string;
   label: string;
   hideLabel?: boolean;
   placeholder?: string;
+  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => any;
 };
 
 export default function Textarea({
@@ -14,6 +17,7 @@ export default function Textarea({
   label,
   hideLabel,
   placeholder,
+  ...props
 }: TextareaProps) {
   const themeKey = useThemeKey();
   return (
@@ -21,7 +25,7 @@ export default function Textarea({
       <StyledLabel htmlFor={id} hideLabel={hideLabel}>
         {label}
       </StyledLabel>
-      <StyledTextarea name={id} themeKey={themeKey} placeholder={placeholder} />
+      <StyledTextarea name={id} themeKey={themeKey} placeholder={placeholder} {...props}/>
     </div>
   );
 }

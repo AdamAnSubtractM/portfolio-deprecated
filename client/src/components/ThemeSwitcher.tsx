@@ -3,12 +3,16 @@ import AppContext from '../context/AppContext';
 import { colors } from '../helpers/theme';
 import ToggleSwitch from './ToggleSwitch';
 
-export default function ThemeSwitcher() {
+type ThemeSwitcherProps = {
+  id: number | string;
+};
+
+export default function ThemeSwitcher({ id }: ThemeSwitcherProps) {
   const [appData, setAppData] = useContext(AppContext);
 
   return (
     <ToggleSwitch
-      id={`toggle-switch--theme-switcher`}
+      id={`theme-switcher--${id}`}
       adaText={`Click to toggle theme from ${
         appData?.themeKey === `lightMode`
           ? `light mode to dark mode.`

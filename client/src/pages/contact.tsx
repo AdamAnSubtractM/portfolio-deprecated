@@ -40,10 +40,10 @@ export default function ContactPage() {
         themeKey === 'lightMode'
           ? `${theme[
               themeKey
-            ].background()} url('stars-bg-alt.svg') center/50% repeat`
+            ].background.main()} url('stars-bg-alt.svg') center/50% repeat`
           : `${theme[
               themeKey
-            ].background()} url('stars-bg.svg') center/50% repeat`
+            ].background.main()} url('stars-bg.svg') center/50% repeat`
       }
     >
       <StyledPage themeKey={themeKey}>
@@ -53,8 +53,7 @@ export default function ContactPage() {
           <div className={`content`}>
             <p>
               Thanks for stopping by my site. Feel free to use the contact form
-              to send me an email. You can also use the Github and Twitter icon
-              to check out my{' '}
+              to send me an email. You can also check out my{' '}
               <A
                 to={`https://github.com/AdamAnSubtractM`}
                 isInternalLink={false}
@@ -63,7 +62,7 @@ export default function ContactPage() {
               >
                 Github
               </A>{' '}
-              and{' '}
+              or give me a follow on{' '}
               <A
                 to={`https://twitter.com/AdamAnSubtractM`}
                 isInternalLink={false}
@@ -71,8 +70,8 @@ export default function ContactPage() {
                 title={`Click to view my Twitter.`}
               >
                 Twitter
-              </A>{' '}
-              respectively.
+              </A>
+              .
             </p>
             <AstronautManRidingRocket />
           </div>

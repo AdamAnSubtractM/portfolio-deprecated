@@ -29,7 +29,8 @@ const anchorStyles = css<ThemeProps>`
       color: ${({ $themeKey }) => theme[$themeKey].link.hover()};
       outline: 0;
       span {
-        background-color: ${({ $themeKey }) => theme[$themeKey].background()};
+        background-color: ${({ $themeKey }) =>
+          theme[$themeKey].background.main()};
       }
     }
   }

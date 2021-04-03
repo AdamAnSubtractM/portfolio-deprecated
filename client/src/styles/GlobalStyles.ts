@@ -90,6 +90,9 @@ const GlobalStyles = createGlobalStyle`
     h2 {
       font-size: 3rem;
     }
+    h2, h3, h4, h5, h6 {
+      border-bottom: 3px dashed;
+    }
     img {
       max-width: 100%;
     }

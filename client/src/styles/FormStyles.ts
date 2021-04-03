@@ -15,6 +15,10 @@ const inputStyles = css<ThemeProps>`
   }
 `;
 
+export const StyledRequiredIndicator = styled.span<ThemeProps>`
+  color: ${({ themeKey }) => theme[themeKey].input.error()};
+`;
+
 export const StyledLabel = styled.label<StyledLabelProps>`
   font-family: 'Poppins', sans-serif;
   font-weight: 600;

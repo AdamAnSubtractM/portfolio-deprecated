@@ -5,13 +5,14 @@ import Logo from '../components/Logo';
 import MainSiteNavigation from '../components/MainSiteNavigation';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import { useThemeKey } from '../helpers/hooks';
-import { colors, sizes, theme } from '../helpers/theme';
+import { colors, sizes, layers, theme } from '../helpers/theme';
 import { StyledFlexContainer } from '../styles/LayoutStyles';
 
 const StyledHeader = styled(StyledFlexContainer)<ThemeProps>`
   padding: 1rem;
   box-shadow: 0px 3px 15px ${colors.primaryDark(0.1)};
-  background-color: ${({ themeKey }) => theme[themeKey].background()};
+  background-color: ${({ themeKey }) => theme[themeKey].background.main()};
+  z-index: ${layers.layer1};
 `;
 
 const StyledLogoWrap = styled.div`
@@ -49,7 +50,7 @@ export default function Header() {
       <MainSiteNavigation />
       <StyledFlexContainer minWidth={`10rem`} preventMobileStack={true}>
         <GithubLink />
-        <ThemeSwitcher />
+        <ThemeSwitcher id={`main-nav`} />
       </StyledFlexContainer>
     </StyledHeader>
   );

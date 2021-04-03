@@ -7,7 +7,7 @@ type StyledCardProps = {
   themeKey: ThemeProps['themeKey'];
   mobileTransparency?: boolean;
   desktopTransparency?: boolean;
-  breakpoint?: 'sm' | 'md' | 'lg' | 'xl';
+  breakpoint?: Sizes[`keys`];
   maxWidth?: string;
   altStyling?: boolean;
 };

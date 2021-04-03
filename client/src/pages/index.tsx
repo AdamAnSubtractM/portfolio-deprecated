@@ -4,7 +4,8 @@ import A from '../components/AnchorTag';
 import AstronautManFishing from '../components/AstronautManFishing';
 import Button from '../components/Button';
 import Head from '../components/Head';
-import { useThemeKey } from '../helpers/hooks';
+import ThemeSwitcher from '../components/ThemeSwitcher';
+import { useThemeKey, useToast } from '../helpers/hooks';
 import { sizes } from '../helpers/theme';
 import { StyledFlexContainer, StyledPageWrapper } from '../styles/LayoutStyles';
 
@@ -33,6 +34,7 @@ const StyledPage = styled.div`
   h2 {
     font-size: 1.6rem;
     font-weight: 600;
+    border-bottom: none;
     @media all and (min-width: ${sizes.xs}px) {
       font-size: 2.45rem;
     }
@@ -95,7 +97,7 @@ const StyledPage = styled.div`
 
 export default function HomePage() {
   const themeKey = useThemeKey();
-
+  const { addToast } = useToast();
   return (
     <StyledPageWrapper
       background={`url('${
@@ -122,6 +124,19 @@ export default function HomePage() {
                 title={`Click to view Adam Knee's Portfolio.`}
               >
                 View Portfolio &#8594;
+              </Button>
+              <Button
+                buttonStyle={`primary`}
+                title={`Open Settings`}
+                onClick={() =>
+                  addToast(
+                    `settings`,
+                    <ThemeSwitcher id={`settings-test`} />,
+                    `bottom-right`
+                  )
+                }
+              >
+                Try out custom toast
               </Button>
             </div>
           </div>

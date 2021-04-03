@@ -38,7 +38,7 @@ const StyledIcon = styled.span<StyledIconProps>`
   &:focus,
   &:hover {
     outline: none;
-    color: ${({ themeKey }) => theme[themeKey].background()};
+    color: ${({ themeKey }) => theme[themeKey].background.main()};
     &:after {
       content: '';
       position: absolute;

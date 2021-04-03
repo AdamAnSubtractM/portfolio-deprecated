@@ -9,17 +9,20 @@ type WrapperProps = {
   fill?: string;
   y?: number;
   duration?: number;
+  svgTransitionSize?: Sizes[`keys`];
+  className?: string;
 };
 
 export default function SVGFloatWrapper({
   children,
   y,
   duration,
+  svgTransitionSize,
   ...svgProps
 }: WrapperProps) {
   return (
     <>
-      {useIsMobile(`md`) ? (
+      {useIsMobile(svgTransitionSize || `md`) ? (
         <svg {...svgProps}>{children}</svg>
       ) : (
         <motion.svg

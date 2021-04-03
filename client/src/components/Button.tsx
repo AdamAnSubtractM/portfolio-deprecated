@@ -19,7 +19,7 @@ type ButtonProps = {
 
 type StyledButtonProps = {
   $themeKey: ThemeProps['themeKey'];
-  swapFocusColor?: ButtonProps['swapFocusColor'];
+  $swapFocusColor?: ButtonProps['swapFocusColor'];
 };
 
 const buttonBaseStyles = css<StyledButtonProps>`
@@ -34,10 +34,12 @@ const buttonBaseStyles = css<StyledButtonProps>`
   border-radius: 3rem;
   padding: 1rem 2rem;
   margin: 0.5rem 0;
+  justify-content: center;
+  align-items: center;
   &:focus {
     outline: none;
-    border-color: ${({ $themeKey, swapFocusColor }) =>
-      swapFocusColor
+    border-color: ${({ $themeKey, $swapFocusColor }) =>
+      $swapFocusColor
         ? theme[$themeKey].link.hover()
         : theme[$themeKey].link.default()};
   }
@@ -50,8 +52,8 @@ const primaryButtonStyles = css<StyledButtonProps>`
   border-color: ${({ $themeKey }) =>
     theme[$themeKey].button.primarySolo.border()};
   &:focus {
-    border-color: ${({ $themeKey, swapFocusColor }) =>
-      swapFocusColor
+    border-color: ${({ $themeKey, $swapFocusColor }) =>
+      $swapFocusColor
         ? theme[$themeKey].button.primarySolo.focusAlt()
         : theme[$themeKey].button.primarySolo.focus()};
   }
@@ -64,8 +66,8 @@ const secondaryButtonStyles = css<StyledButtonProps>`
   border-color: ${({ $themeKey }) =>
     theme[$themeKey].button.secondary.border()};
   &:focus {
-    border-color: ${({ $themeKey, swapFocusColor }) =>
-      swapFocusColor
+    border-color: ${({ $themeKey, $swapFocusColor }) =>
+      $swapFocusColor
         ? theme[$themeKey].button.secondary.focusAlt()
         : theme[$themeKey].button.secondary.focus()};
   }
@@ -149,7 +151,7 @@ export default function Button({
               $themeKey={themeKey}
               title={title}
               to={to}
-              swapFocusColor={swapFocusColor}
+              $swapFocusColor={swapFocusColor}
               className={`button button--primary button--primary-solo`}
             >
               {children}
@@ -161,7 +163,7 @@ export default function Button({
               href={to}
               target={openInNewTab ? `_blank` : `_self`}
               rel={openInNewTab ? `noopener noreferrer` : null}
-              swapFocusColor={swapFocusColor}
+              $swapFocusColor={swapFocusColor}
             >
               {children}
             </StyledPrimaryAnchor>
@@ -172,7 +174,7 @@ export default function Button({
           $themeKey={themeKey}
           onClick={onClick}
           title={title}
-          swapFocusColor={swapFocusColor}
+          $swapFocusColor={swapFocusColor}
           className={`button button--primary button--primary-solo`}
           type={type}
         >
@@ -187,7 +189,7 @@ export default function Button({
               $themeKey={themeKey}
               title={title}
               to={to}
-              swapFocusColor={swapFocusColor}
+              $swapFocusColor={swapFocusColor}
               className={`button button--primary button--primary-grouped`}
             >
               {children}
@@ -199,7 +201,7 @@ export default function Button({
               href={to}
               target={openInNewTab ? `_blank` : `_self`}
               rel={openInNewTab ? `noopener noreferrer` : null}
-              swapFocusColor={swapFocusColor}
+              $swapFocusColor={swapFocusColor}
               className={`button button--primary button--primary-grouped`}
             >
               {children}
@@ -217,7 +219,7 @@ export default function Button({
           title={title}
           target={openInNewTab ? `_blank` : `_self`}
           rel={openInNewTab ? `noopener` : null}
-          swapFocusColor={swapFocusColor}
+          $swapFocusColor={swapFocusColor}
           className={`button button--primary button--primary-grouped`}
           type={type}
         >
@@ -232,7 +234,7 @@ export default function Button({
               $themeKey={themeKey}
               title={title}
               to={to}
-              swapFocusColor={swapFocusColor}
+              $swapFocusColor={swapFocusColor}
               className={`button button--secondary button--secondary-grouped`}
             >
               {children}
@@ -244,7 +246,7 @@ export default function Button({
               href={to}
               target={openInNewTab ? `_blank` : `_self`}
               rel={openInNewTab ? `noopener noreferrer` : null}
-              swapFocusColor={swapFocusColor}
+              $swapFocusColor={swapFocusColor}
               className={`button button--secondary button--secondary-grouped`}
             >
               {children}
@@ -262,7 +264,7 @@ export default function Button({
           title={title}
           target={openInNewTab ? `_blank` : `_self`}
           rel={openInNewTab ? `noopener` : null}
-          swapFocusColor={swapFocusColor}
+          $swapFocusColor={swapFocusColor}
           className={`button button--secondary button--secondary-grouped`}
           type={type}
         >
@@ -275,7 +277,7 @@ export default function Button({
           $themeKey={themeKey}
           onClick={onClick}
           title={title}
-          swapFocusColor={swapFocusColor}
+          $swapFocusColor={swapFocusColor}
           className={`button`}
           type={type}
         >
