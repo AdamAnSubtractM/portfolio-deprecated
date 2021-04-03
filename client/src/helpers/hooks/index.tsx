@@ -79,7 +79,9 @@ const useCookie = (
   key: string,
   defaultValue: string
 ): [string, (value: string, numberofDays: number) => void] => {
+  const isClient = typeof window !== `undefined`;
   const getItem = (key: string) => {
+    if (!isClient) return;
     return document?.cookie?.split('; ').reduce((total, currentCookie) => {
       const item = currentCookie.split('=');
       const storedKey = item[0];
@@ -90,7 +92,7 @@ const useCookie = (
   };
 
   const setItem = (key: string, value: string, numberOfDays: number) => {
-    if (!document) return;
+    if (!document || !isClient) return;
     const now = new Date();
     // set the time to be now + numberOfDays
     now.setTime(now.getTime() + numberOfDays * 60 * 60 * 24 * 1000);

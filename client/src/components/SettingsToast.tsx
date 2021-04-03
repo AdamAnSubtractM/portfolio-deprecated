@@ -17,6 +17,8 @@ export default function SettingsToast({ children }: SettingsToastProps) {
   const { addToast, deleteToast } = useToast();
 
   const toggleToast = () => {
+    const isClient = typeof window !== `undefined`;
+    if (!isClient) return;
     const settingsToast = document.querySelector(`#settings__toast`);
     console.log({ settingsToast });
     if (settingsToast) {
