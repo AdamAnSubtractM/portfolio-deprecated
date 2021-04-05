@@ -15,7 +15,11 @@ type AnchorTagProps = {
   isIcon?: boolean;
 };
 
-const anchorStyles = css<ThemeProps>`
+type LinkContentProps = {
+  children: React.ReactNode;
+};
+
+export const anchorStyles = css<ThemeProps>`
   text-decoration: none;
   transition: border-color 0.3s ease-out;
   position: relative;
@@ -75,6 +79,22 @@ const StyledLink = styled.span<ThemeProps>`
   }
 `;
 
+export const LinkContents = function ({ children }: LinkContentProps) {
+  return (
+    <motion.span
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      style={{
+        display: `inline-flex`,
+        alignItems: `center`,
+        cursor: `pointer`,
+      }}
+    >
+      {children}
+    </motion.span>
+  );
+};
+
 export default function AnchorTag({
   className,
   isInternalLink = true,
@@ -85,18 +105,6 @@ export default function AnchorTag({
   isIcon,
 }: AnchorTagProps) {
   const themeKey = useThemeKey();
-
-  const LinkContents = function () {
-    return (
-      <motion.span
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        style={{ display: `inline-flex`, alignItems: `center` }}
-      >
-        {children}
-      </motion.span>
-    );
-  };
 
   return (
     <>
@@ -112,7 +120,7 @@ export default function AnchorTag({
           rel={openInNewTab ? `noopener noreferrer` : null}
           $themeKey={themeKey}
         >
-          <LinkContents />
+          <LinkContents>{children}</LinkContents>
         </StyledLink>
       ) : (
         <StyledLink $themeKey={themeKey}>
@@ -125,7 +133,7 @@ export default function AnchorTag({
             target={openInNewTab ? `_blank` : `_self`}
             rel={openInNewTab ? `noopener` : null}
           >
-            <LinkContents />
+            <LinkContents>{children}</LinkContents>
           </Link>
         </StyledLink>
       )}

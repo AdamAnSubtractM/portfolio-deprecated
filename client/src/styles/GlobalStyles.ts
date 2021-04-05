@@ -4,22 +4,34 @@ import { theme } from '../helpers/theme';
 const GlobalStyles = createGlobalStyle`
     @font-face {
       font-family: 'Poppins';
-      src: url('Poppins-Black.ttf') format('truetype');
+      src: url('Poppins-Black.eot'); /* IE9 Compat Modes */
+      src: url('Poppins-Black.woff2') format('woff2'),
+      url('Poppins-Black.woff') format('woff'),
+      url('Poppins-Black.ttf') format('truetype');
       font-weight: normal;
     }
     @font-face {
       font-family: 'Poppins';
-      src: url('Poppins-Black.ttf') format('truetype');
+      src: url('Poppins-SemiBold.eot'); /* IE9 Compat Modes */
+      src: url('Poppins-SemiBold.woff2') format('woff2'),
+      url('Poppins-SemiBold.woff') format('woff'),
+      url('Poppins-Black.ttf') format('truetype');
       font-weight: 900;
     }
     @font-face {
       font-family: 'Poppins';
-      src: url('Poppins-SemiBold.ttf') format('truetype');
+      src: url('Poppins-SemiBold.eot'); /* IE9 Compat Modes */
+      src: url('Poppins-SemiBold.woff2') format('woff2'),
+      url('Poppins-SemiBold.woff') format('woff'),
+      url('Poppins-SemiBold.ttf') format('truetype');
       font-weight: 600;
     }
     @font-face {
       font-family: 'Playfair Display';
-      src: url('PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+      src: url('PlayfairDisplay-VariableFont_wght.eot'); /* IE9 Compat Modes */
+      src: url('PlayfairDisplay-VariableFont_wght.woff2') format('woff2'),
+      url('PlayfairDisplay-VariableFont_wght.woff') format('woff'),
+      url('PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
       font-weight: 100 1000;
     }
     :root {

@@ -56,7 +56,7 @@ const StyledToast = styled.div<StyledToastContainerProps>`
       transform: translateX(0);
     }
   }
-  width: 20rem;
+  width: 30rem;
   display: flex;
   flex-flow: column nowrap;
   background-color: ${({ themeKey }) => theme[themeKey].toast.background()};
@@ -69,6 +69,7 @@ const StyledToast = styled.div<StyledToastContainerProps>`
     position === 'top-left' || position === 'bottom-left'
       ? `toast-in-left .7s`
       : `toast-in-right .7s`};
+  box-shadow: ${({ themeKey }) => theme[themeKey].boxShadow};
   .toast {
     &__header {
       display: flex;

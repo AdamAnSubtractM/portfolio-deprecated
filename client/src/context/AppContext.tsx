@@ -20,7 +20,7 @@ export function AppProvider({ children }: AppProviderProps) {
     `false`
   );
   const [appData, setAppData] = useState<AppDataContext>({
-    themeKey: themeCookie === `lightMode` ? themeCookie : `darkMode`,
+    themeKey: themeCookie === `lightMode` ? `lightMode` : `darkMode`,
     animationsDisabled: animationsDisabledCookie === `true` ? true : false,
   });
 
